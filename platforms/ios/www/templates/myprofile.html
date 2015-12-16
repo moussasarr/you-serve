@@ -1,0 +1,30 @@
+<ion-view title="Profile" ng-init="init()">
+    <ion-content>
+        <div class="list card">
+            <div class="item item-avatar">
+                <!--<img ng-src="{{profileData.picture.data.url}}">-->
+                <h2>{{myprofileData.query.userinfo.name}}</h2>
+                <!--<p>{{profileData.id}}</p>-->
+            </div>
+            <a href="#" class="item">
+                <i class="icon ion-earth"></i>
+                <!--{{profileData.website}}-->
+                {{myprofileData.query.userinfo.email}}
+                
+            </a>
+            <a href="#" class="item">
+                <i class="icon ion-home"></i>
+                <!--{{profileData.location.name}}-->
+                {{myprofileData.query.userinfo.registrationdate}}
+                
+            </a>
+            <a href="#" class="item">
+                <i class="icon ion-heart"></i>
+                <!--{{profileData.relationship_status}}-->
+                {{myprofileData.query.userinfo.registrationdate}}
+
+                
+            </a>
+        </div>
+    </ion-content>
+</ion-view>

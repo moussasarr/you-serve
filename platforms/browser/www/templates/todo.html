@@ -1,0 +1,40 @@
+<div ng-app="facebookExample" view-title="Tasks">
+<div ng-controller="todoController">
+<h1>Tasks</h1>
+
+<div class="item item-input-inset">
+<label class="item-input-wrapper">
+<!-- The actual input tag which is bound to the todoInput using ng-model -->
+<input type="text" placeholder="Add New Item" ng-model="todoInput" size="100"> 
+</label>
+<!-- Our button thay will call our funtion to add a new todo item -->
+<button class="button button-small" ng-click="todoAdd()">
+Add Task
+</button>
+</div>
+
+
+
+
+      <div ng-repeat="x in todoList">
+      <li class="item item-checkbox">
+      &nbsp;&nbsp;&nbsp;&nbsp;<label class="checkbox">
+      </label>
+      <!-- this is the checkbox element, you will see it is bound to the done setting in the items array -->
+      <!-- When clicked it calls the update function to update the item to its done status -->
+      <input type="checkbox" ng-model="x.done" ng-click="update()"/>
+      <!-- this is a span tag that shows the item text, I am using ng-bind, instead of the span tag we could have used {{x.todoText}} as well -->
+      <button class="fund-button" style= "float: left;
+" ng-click="fund()">Fund</button>
+      <span>{{x.todoText}}</span>
+      <button class="doButton" style= "float: right;
+margin-right: 2px;" ng-click="do()">Do</button>
+      </li>
+      </div>
+<!-- the remove button will call the remove function and remoave all items that   are marked done -->
+<button class="button button-block button-assertive" ng-click="remove()">
+Remove Checked Tasks
+</button>
+
+</div>
+</div>
