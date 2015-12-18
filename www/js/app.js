@@ -188,6 +188,7 @@ $scope.todoAdd = function() {
 $scope.do = function(x){
    $scope.DoRequested.push(x);
    // Send email notifier to admin 
+   /*
   $.ajax({
   type: “POST”,
   url: 'https://mandrillapp.com/api/1.0/messages/send.json',
@@ -216,7 +217,7 @@ $scope.do = function(x){
    console.log(response); // if you're into that sorta thing
  });
 
-
+*/
 
 };
 
@@ -427,7 +428,6 @@ facebookExample.controller("myProfileController", function($scope, $http, $local
 
 /**
 facebookExample.controller("FeedController", function($scope, $http, $localStorage, $location) {
-
     $scope.init = function() {
         if($localStorage.hasOwnProperty("accessToken") === true) {
             $http.get("https://graph.facebook.com/v2.2/me/feed", { params: { access_token: $localStorage.accessToken, format: "json" }}).then(function(result) {
@@ -444,7 +444,22 @@ facebookExample.controller("FeedController", function($scope, $http, $localStora
             $location.path("/login");
         }
     };
-
 });
-
 ***/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
