@@ -10,7 +10,7 @@
     "CoreLocation.framework": 1,
     "CoreMedia.framework": 1,
     "CoreVideo.framework": 1,
-    "MessageUI.framework": 1,
+    "MessageUI.framework": 2,
     "OpenGLES.framework": 1,
     "SafariServices.framework": 1,
     "SystemConfiguration.framework": 1,

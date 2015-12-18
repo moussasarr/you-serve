@@ -73,6 +73,7 @@
 		433AB1F7B60241839B7E93FC /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 478A395CFDAA4C8C81971D11 /* libCardIO.a */; };
 		035019BD3D134B028E42F87D /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3583DF19904492D9F5B9D4B /* libopencv_core.a */; };
 		E8AFF2D839EB45AE8A70810E /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A171BC180D684FD39EAC7444 /* libopencv_imgproc.a */; };
+		D7B30847961C437299D44E73 /* APPEmailComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = CD67CBC4F009432A8DD32DF6 /* APPEmailComposer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +187,8 @@
 		478A395CFDAA4C8C81971D11 /* libCardIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libCardIO.a"; path = "libCardIO.a"; sourceTree = "<group>"; fileEncoding = 4; };
 		F3583DF19904492D9F5B9D4B /* libopencv_core.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libopencv_core.a"; path = "libopencv_core.a"; sourceTree = "<group>"; fileEncoding = 4; };
 		A171BC180D684FD39EAC7444 /* libopencv_imgproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libopencv_imgproc.a"; path = "libopencv_imgproc.a"; sourceTree = "<group>"; fileEncoding = 4; };
+		CD67CBC4F009432A8DD32DF6 /* APPEmailComposer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "APPEmailComposer.m"; path = "de.appplant.cordova.plugin.email-composer/APPEmailComposer.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		E8AEA04E499C4600ABE19E93 /* APPEmailComposer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "APPEmailComposer.h"; path = "de.appplant.cordova.plugin.email-composer/APPEmailComposer.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +362,8 @@
 				DBCF87984C93417880240D71 /* PayPalPayment.h */,
 				5CA6039FC46C45CF92A63D1A /* PayPalPaymentViewController.h */,
 				5CDF95FDB3C84C2FB78601D2 /* PayPalProfileSharingViewController.h */,
+				CD67CBC4F009432A8DD32DF6 /* APPEmailComposer.m */,
+				E8AEA04E499C4600ABE19E93 /* APPEmailComposer.h */,
 			);
 			name = Plugins;
 			path = "HelloCordova/Plugins";
@@ -550,6 +555,7 @@
 				4EBC4FAEF4A6410B9F40717E /* CDVDevice.m in Sources */,
 				D8E1003D1C6B434580311F80 /* CDVInAppBrowser.m in Sources */,
 				451E077D10184999985AC72C /* PayPalMobileCordovaPlugin.m in Sources */,
+				D7B30847961C437299D44E73 /* APPEmailComposer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

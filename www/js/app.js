@@ -31,11 +31,7 @@ facebookExample.config(function($stateProvider, $urlRouterProvider) {
             controller: 'registerController'
         })
 
-        .state('profile', {
-            url: '/profile',
-            templateUrl: 'templates/profile.html',
-            controller: 'ProfileController'
-        })
+    
         
          .state('todo', {
             url: '/todo',
@@ -50,11 +46,7 @@ facebookExample.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'templates/myprofile.html',
             controller: 'myProfileController'
         })
-        .state('feed', {
-            url: '/feed',
-            templateUrl: 'templates/feed.html',
-            controller: 'FeedController'
-        });
+        
 
       
 
@@ -70,7 +62,7 @@ facebookExample.controller("LoginController", function($scope, $http, $cordovaOa
     $scope.login = function() {
         $cordovaOauth.facebook("1204824659546785", ["email", "user_website", "user_location", "user_relationships"]).then(function(result) {
             $localStorage.accessToken = result.access_token;
-            $location.path("/profile");
+            $location.path("/myprofile");
         }, function(error) {
             alert("There was a problem signing in!  See the console for logs");
             console.log(error);
@@ -147,6 +139,9 @@ facebookExample.controller('todoController', ['$scope', function($scope) {
 // Initialize the todo list array
 //if local storage is null save the todolist to local storage
 $scope.todoList = [];
+$scope.DoRequested = [];
+
+
 
 if (localStorage.getItem("mytodos") === null)
 {
@@ -163,17 +158,24 @@ if (localStorage.getItem("mytodos") === null)
 
 // Add an item function
 $scope.todoAdd = function() {
+
   //check to see if text has been entered, if not exit
-    if ($scope.todoInput === null || $scope.todoInput === ''){return;}
+    if ($scope.todoInput === null || $scope.todoInput === ''){ return; }
 
     //if there is text add it to the array
-    $scope.todoList.push({todoText:$scope.todoInput, done:false});
+    $scope.todoList.push({todoText:$scope.todoInput, 
+      todoAdmin:'' , doRequested: '', beingFunded: '', 
+       adminAprovedRequest:false, currentFund: 0, userAproved: false, user_email:'' , userdidWork: "false", adminCheckedWork: "false",
+         done:false});
 
     //clear the textbox
     $scope.todoInput = "";
 
     //resave the list to localstorage
     localStorage.setItem("mytodos", angular.toJson($scope.todoList));
+   
+
+  
 };
 
 
@@ -183,7 +185,50 @@ $scope.todoAdd = function() {
 //Do button
 
 
+$scope.do = function(x){
+   $scope.DoRequested.push(x);
+   // Send email notifier to admin 
+  $.ajax({
+  type: “POST”,
+  url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+  data: {
+    ‘key’: ‘n3ZIdxXIRIZbvUWw6Z34wA’,
+    ‘message’: {
+      ‘from_email’: ‘noreply@you-serve.org’,
+      ‘to’: [
+          {
+            ‘email’: ‘RECIPIENT_NO_1@EMAIL.HERE’,
+            ‘name’: ‘RECIPIENT NAME (OPTIONAL)’,
+            ‘type’: ‘to’
+          },
+          {
+            ‘email’: ‘RECIPIENT_NO_2@EMAIL.HERE’,
+            ‘name’: ‘ANOTHER RECIPIENT NAME (OPTIONAL)’,
+            ‘type’: ‘to’
+          }
+        ],
+      ‘autotext’: ‘true’,
+      ‘subject’: ‘NEW TASK ASSIGNMENT REQUEST!’,
+      ‘html’: ‘<div!’
+    }
+  }
+ }).done(function(response) {
+   console.log(response); // if you're into that sorta thing
+ });
 
+
+
+};
+
+
+
+
+$scope.fund = function(x){
+   $scope.FundingProcess.push(x);
+
+
+
+}
 
 
 
@@ -343,25 +388,6 @@ facebookExample.controller('registerController', function($scope, $http, $localS
 
 
 
-facebookExample.controller("ProfileController", function($scope, $http, $localStorage, $location) {
-
-    $scope.init = function() {
-        if($localStorage.hasOwnProperty("accessToken") === true) {
-            $http.get("https://graph.facebook.com/v2.2/me", { params: { access_token: $localStorage.accessToken, fields: "id,name,gender,location,website,picture,relationship_status", format: "json" }}).then(function(result) {
-                $scope.profileData = result.data;
-            }, function(error) {
-                alert("There was a problem getting your profile.  Check the logs for details.");
-                console.log(error);
-            });
-        } else {
-            alert("Not signed in");
-            $location.path("/login");
-        }
-    };
-
-});
-
-
 
 facebookExample.controller("myProfileController", function($scope, $http, $localStorage, $location) {
 
@@ -374,7 +400,22 @@ facebookExample.controller("myProfileController", function($scope, $http, $local
                 alert("There was a problem getting your profile.  Check the logs for details.");
                 console.log(error);
             });
-        } else {
+        } 
+
+       
+        else if($localStorage.hasOwnProperty("accessToken") === true){
+
+              $http.get("https://graph.facebook.com/v2.2/me", { params: { access_token: $localStorage.accessToken, fields: "id,name,gender,location,website,picture,relationship_status", format: "json" }}).then(function(result) {
+                $scope.profileData = result.data;
+            }, function(error) {
+                alert("There was a problem getting your profile.  Check the logs for details.");
+                console.log(error);
+            });
+
+        }
+
+
+        else {
             alert("Not signed in");
             $location.path("/login");
         }
@@ -384,7 +425,7 @@ facebookExample.controller("myProfileController", function($scope, $http, $local
 
 
 
-
+/**
 facebookExample.controller("FeedController", function($scope, $http, $localStorage, $location) {
 
     $scope.init = function() {
@@ -405,3 +446,5 @@ facebookExample.controller("FeedController", function($scope, $http, $localStora
     };
 
 });
+
+***/

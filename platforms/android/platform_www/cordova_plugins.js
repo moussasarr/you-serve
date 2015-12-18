@@ -46,6 +46,15 @@ module.exports = [
         "clobbers": [
             "PayPalMobile"
         ]
+    },
+    {
+        "file": "plugins/de.appplant.cordova.plugin.email-composer/www/email_composer.js",
+        "id": "de.appplant.cordova.plugin.email-composer.EmailComposer",
+        "pluginId": "de.appplant.cordova.plugin.email-composer",
+        "clobbers": [
+            "cordova.plugins.email",
+            "plugin.email"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -57,7 +66,8 @@ module.exports.metadata =
     "cordova-plugin-console": "1.0.2",
     "cordova-plugin-device": "1.1.0",
     "cordova-plugin-inappbrowser": "1.1.2-dev",
-    "com.paypal.cordova.mobilesdk": "3.1.20"
+    "com.paypal.cordova.mobilesdk": "3.1.20",
+    "de.appplant.cordova.plugin.email-composer": "0.8.2"
 }
 // BOTTOM OF METADATA
 });

@@ -39,6 +39,9 @@
     <feature name="PayPalMobile">
         <param name="ios-package" onload="true" value="PayPalMobileCordovaPlugin" />
     </feature>
+    <feature name="EmailComposer">
+        <param name="ios-package" value="APPEmailComposer" />
+    </feature>
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
     <name>HelloCordova</name>

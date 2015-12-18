@@ -55,6 +55,10 @@
                         {
                             "xml": "<feature name=\"PayPalMobile\"><param name=\"ios-package\" onload=\"true\" value=\"PayPalMobileCordovaPlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"EmailComposer\"><param name=\"ios-package\" value=\"APPEmailComposer\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -105,6 +109,9 @@
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
         "com.paypal.cordova.mobilesdk": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "de.appplant.cordova.plugin.email-composer": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         }
     },
@@ -166,6 +173,15 @@
             "clobbers": [
                 "PayPalMobile"
             ]
+        },
+        {
+            "file": "plugins/de.appplant.cordova.plugin.email-composer/www/email_composer.js",
+            "id": "de.appplant.cordova.plugin.email-composer.EmailComposer",
+            "pluginId": "de.appplant.cordova.plugin.email-composer",
+            "clobbers": [
+                "cordova.plugins.email",
+                "plugin.email"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -175,6 +191,7 @@
         "cordova-plugin-console": "1.0.2",
         "cordova-plugin-device": "1.1.0",
         "cordova-plugin-inappbrowser": "1.1.2-dev",
-        "com.paypal.cordova.mobilesdk": "3.1.20"
+        "com.paypal.cordova.mobilesdk": "3.1.20",
+        "de.appplant.cordova.plugin.email-composer": "0.8.2"
     }
 }
